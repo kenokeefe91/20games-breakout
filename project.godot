@@ -11,9 +11,26 @@ config_version=5
 [application]
 
 config/name="Breakout"
-run/main_scene="res://scenes/paddle.tscn"
+run/main_scene="res://scenes/game_area.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameStates="*res://scripts/autoload/GameStates.gd"
+
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=800
+
+[editor]
+
+version_control/autoload_on_startup=true
+
+[global]
+
+autoload=false
 
 [rendering]
 

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://btekwprfvlhxe"]
+
+[ext_resource type="Script" path="res://scripts/standard_brick.gd" id="1_5v4km"]
+[ext_resource type="Texture2D" uid="uid://42gup6e2sshd" path="res://assets/paddle.png" id="1_j47ij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dx16"]
+size = Vector2(96, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b4ly"]
+size = Vector2(96, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gomkj"]
+size = Vector2(1, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m338g"]
+size = Vector2(1, 16)
+
+[node name="StandardBrick" type="Node2D"]
+script = ExtResource("1_5v4km")
+
+[node name="BrickSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_j47ij")
+
+[node name="BrickTopBot" type="Area2D" parent="."]
+
+[node name="collider_top" type="CollisionShape2D" parent="BrickTopBot"]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_5dx16")
+
+[node name="collider_bot" type="CollisionShape2D" parent="BrickTopBot"]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_2b4ly")
+
+[node name="BrickLeftRight" type="Area2D" parent="."]
+
+[node name="collider_left" type="CollisionShape2D" parent="BrickLeftRight"]
+position = Vector2(-49.5, 0)
+shape = SubResource("RectangleShape2D_gomkj")
+
+[node name="collider_right" type="CollisionShape2D" parent="BrickLeftRight"]
+position = Vector2(49.5, 0)
+shape = SubResource("RectangleShape2D_m338g")
+
+[connection signal="area_entered" from="BrickTopBot" to="." method="_touched_by_ball"]
+[connection signal="area_entered" from="BrickLeftRight" to="." method="_touched_by_ball"]

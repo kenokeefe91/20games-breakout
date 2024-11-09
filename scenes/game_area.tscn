@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dk51snrf3o21o"]
+
+[ext_resource type="PackedScene" uid="uid://drpbupcyiv4wf" path="res://scenes/paddle.tscn" id="1_6h0rj"]
+[ext_resource type="Script" path="res://scripts/game_area.gd" id="1_jjni0"]
+[ext_resource type="PackedScene" uid="uid://bes2453iwomxu" path="res://scenes/ball.tscn" id="2_woxv7"]
+[ext_resource type="PackedScene" uid="uid://cf750jvg86wui" path="res://scenes/levels/DemoLevel.tscn" id="4_4bnw5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n46qa"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fvumx"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cx0so"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fi2eg"]
+normal = Vector2(0, 1)
+
+[node name="GameArea" type="Node2D"]
+script = ExtResource("1_jjni0")
+
+[node name="Paddle" parent="." instance=ExtResource("1_6h0rj")]
+position = Vector2(400, 531)
+
+[node name="Ball" parent="." node_paths=PackedStringArray("paddle") instance=ExtResource("2_woxv7")]
+paddle = NodePath("../Paddle")
+
+[node name="GameWall" type="Node2D" parent="."]
+
+[node name="Floor" type="Area2D" parent="GameWall"]
+
+[node name="FloorCollider" type="CollisionShape2D" parent="GameWall/Floor"]
+position = Vector2(0, 800)
+shape = SubResource("WorldBoundaryShape2D_n46qa")
+
+[node name="LeftWall" type="Area2D" parent="GameWall"]
+
+[node name="LeftWallCollider" type="CollisionShape2D" parent="GameWall/LeftWall"]
+shape = SubResource("WorldBoundaryShape2D_fvumx")
+
+[node name="RightWall" type="Area2D" parent="GameWall"]
+
+[node name="RightWallCollider" type="CollisionShape2D" parent="GameWall/RightWall"]
+position = Vector2(600, 78)
+shape = SubResource("WorldBoundaryShape2D_cx0so")
+
+[node name="TopWall" type="Area2D" parent="GameWall"]
+
+[node name="TopWallCollider" type="CollisionShape2D" parent="GameWall/TopWall"]
+shape = SubResource("WorldBoundaryShape2D_fi2eg")
+
+[node name="DemoLevel" parent="." instance=ExtResource("4_4bnw5")]
+position = Vector2(23, 91)
+
+[connection signal="reach_floor" from="Ball" to="." method="_ball_reach_floor"]

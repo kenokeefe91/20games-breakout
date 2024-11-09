@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf750jvg86wui"]
+
+[ext_resource type="PackedScene" uid="uid://btekwprfvlhxe" path="res://scenes/standard_brick.tscn" id="1_iviip"]
+
+[node name="DemoLevel" type="Node2D"]
+
+[node name="b1" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(73, 76)
+
+[node name="b2" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(120, 110)
+
+[node name="b3" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(197, 76)
+
+[node name="b4" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(248, 110)
+
+[node name="b5" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(323, 76)
+
+[node name="b6" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(367, 110)
+
+[node name="b7" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(448, 75)
+
+[node name="b8" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(487, 111)
+
+[node name="b9" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(77, 144)
+
+[node name="b10" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(199, 147)
+
+[node name="b11" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(323, 149)
+
+[node name="b12" parent="." instance=ExtResource("1_iviip")]
+position = Vector2(448, 152)
